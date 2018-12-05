@@ -1,0 +1,23 @@
+version: '3'
+services:
+  msgsender:
+    hostname: msgsender
+    build:
+      context: .
+      dockerfile: Sender.dockerfile
+    depends_on: 
+      - rabbitmq
+  msgreceiver:
+    hostname: msgreceiver
+    build:
+      context: .
+      dockerfile: Receiver.dockerfile
+    depends_on: 
+      - rabbitmq      
+  rabbitmq:
+    hostname: "rabbit"
+    build:
+      context: .
+      dockerfile: rabbitmq.dockerfile
+    labels:
+      NAME: "rabbit"
