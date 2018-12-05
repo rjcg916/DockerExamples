@@ -1,0 +1,16 @@
+version: '3'
+services:
+  magic8client:
+    hostname: magic8client
+    build:
+      context: .
+      dockerfile: Client.dockerfile
+    depends_on:
+      - magic8server
+  magic8server:
+    hostname: magic8server
+    build:
+      context: .
+      dockerfile: Runner.dockerfile
+    ports:
+      - 8080

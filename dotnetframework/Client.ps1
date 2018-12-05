@@ -1,0 +1,1 @@
+docker build -f Client.dockerfile -t svcclient . 
