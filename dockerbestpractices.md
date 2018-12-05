@@ -204,7 +204,7 @@ Settings
 # escape=
  
 #create builder container from published image
-FROM azuse2dtc01.corp.jabil.org:5000/it-stp-df_devops/dotnet-builder-mvc as AppBuild
+FROM azuse2dtc01.corp.acme.org:5000/it-stp-df_devops/dotnet-builder-mvc as AppBuild
 
 # Restore the default Windows shell for correct batch processing below.
 SHELL ["cmd", "/S", "/C"]
@@ -240,7 +240,7 @@ COPY . .
 RUN c:/buildtools/msbuild/15.0/bin/msbuild.exe c:/source/src/PhoenixApi/PhoenixApi.csproj /maxcpucount /p:DebugSymbols=false /p:Configuration=Release /p:PublishProfile=FolderProfile /p:DeployOnBuild=true
 
 #create final container starting with base, run-time image
-FROM azuse2dtc01.corp.jabil.org:5000/it-stp-df_devops/iis-aspnet-fullframework
+FROM azuse2dtc01.corp.acme.org:5000/it-stp-df_devops/iis-aspnet-fullframework
 
 SHELL ["powershell", "-Command", "$ErrorActionPreference = 'Stop'; $ProgressPreference = 'Continue'; $verbosePreference='Continue';"]
 
